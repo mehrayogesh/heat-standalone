@@ -14,6 +14,8 @@ configuration variables. It will be sourced by the install-heat shell script.
  - DATABASE_PASSWORD
  - RABBITMQ_PASSWORD
  - REGION (ex. RegionOne)
+ - AUTH_PROTOCOL (http/https)
+ - AUTH_PORT (AUTH PORT)
  - AUTH_SERVER (IP of server where devsatck is running)
  - HEAT_ADMIN_PASSWORD (Password for heat admin account, admin account used is "heat" and admin tenant is "service")
 
@@ -27,7 +29,7 @@ $ sudo apt-get update
 
 $ sudo apt-get install git-core -y
 
-$ git clone https://github.com/sushilkm/heat-standalone.git
+$ git clone https://github.com/mehrayogesh/heat-standalone.git
 
 $ cd heat-standalone
 
