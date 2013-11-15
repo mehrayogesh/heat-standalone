@@ -12,18 +12,20 @@ then
 else
     echo " * Enter Value for REGION... "
     read -e REGION
-    echo " * Enter Value for AUTH_SERVER... "
+    echo " * Enter Value for AUTH_PROTOCOL... "
+    read -e AUTH_PROTOCOL
+     echo " * Enter Value for AUTH_SERVER... "
     read -e AUTH_SERVER
+    echo " * Enter Value for AUTH_PORT... "
+    read -e AUTH_PORT
     echo " * Enter Value for HEAT ADMIN PASSWORD... "
     read -e HEAT_ADMIN_PASSWORD
     echo REGION=$REGION > localrc
+    echo AUTH_PROTOCOL=$AUTH_PROTOCOL >> localrc
+    echo AUTH_PORT=$AUTH_PORT >> localrc
     echo AUTH_SERVER=$AUTH_SERVER >> localrc
     echo HEAT_ADMIN_PASSWORD=$HEAT_ADMIN_PASSWORD >> localrc
 fi
-
-echo " * Region will be set to '${REGION}'..."
-echo " * Auth URL will be set to '${AUTH_SERVER}'..."
-echo " * Heat Admin Password will be set to '${HEAT_ADMIN_PASSWORD}'..."
 
 sleep 3
 
@@ -112,9 +114,9 @@ signing_dir = /var/cache/heat
 admin_password = $HEAT_ADMIN_PASSWORD
 admin_user = heat
 admin_tenant_name = service
-auth_uri = http://${AUTH_SERVER}:5000/v2.0
-auth_protocol = http
-auth_port = 35357
+auth_uri = ${AUTH_PROTOCOL}://${AUTH_SERVER}:${AUTH_PORT}/v2.0
+auth_protocol = ${AUTH_PROTOCOL}
+auth_port = ${AUTH_PORT}
 auth_host = $AUTH_SERVER
 
 EOF
